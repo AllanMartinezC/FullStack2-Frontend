@@ -20,7 +20,7 @@ export const getUsuarios = async (): Promise<Usuario[]> => {
   return res.json();
 };
 
-// Crear usuario (Renombrado de crearUsuario a createUsuario para el Dashboard)
+// Crear usuario 
 export const createUsuario = async (usuario: Partial<Usuario>): Promise<Usuario> => {
   const res = await fetch(API_URL, {
     method: "POST",
@@ -31,7 +31,7 @@ export const createUsuario = async (usuario: Partial<Usuario>): Promise<Usuario>
   return res.json();
 };
 
-// Eliminar usuario (Renombrado de eliminarUsuario a deleteUsuario para el Dashboard)
+// Eliminar usuario 
 export const deleteUsuario = async (id: number): Promise<void> => {
   const res = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
@@ -40,3 +40,4 @@ export const deleteUsuario = async (id: number): Promise<void> => {
   if (!res.ok) throw new Error("Error al eliminar usuario");
 
 };
+
