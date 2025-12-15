@@ -1,6 +1,5 @@
 import type { Producto } from "../types";
 
-// ⚠️ Ajustamos la base a /api para poder llamar a /productos y /categorias
 const API_URL = "http://localhost:8080/api"; 
 
 // Helper para obtener las cabeceras con el Token
@@ -66,4 +65,5 @@ export const getCategorias = async (): Promise<any[]> => {
     const res = await fetch(`${API_URL}/categorias`);
     if (!res.ok) throw new Error("Error al cargar categorías");
     return res.json();
+
 };
