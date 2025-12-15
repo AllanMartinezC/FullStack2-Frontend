@@ -2,7 +2,7 @@ import type{ Usuario } from "../types";
 
 const API_URL = "http://localhost:8080/api/usuarios";
 
-// Helper para obtener el token (Igual que en productoService)
+// Helper para obtener el token 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
   return {
@@ -38,4 +38,5 @@ export const deleteUsuario = async (id: number): Promise<void> => {
     headers: getAuthHeaders(),
   });
   if (!res.ok) throw new Error("Error al eliminar usuario");
+
 };
