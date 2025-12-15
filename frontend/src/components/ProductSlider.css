@@ -1,0 +1,106 @@
+/* contenedor base */
+.hh-loop-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;         
+  margin: 0 auto;
+  overflow: hidden;          
+  padding: 10px 0;
+}
+
+/* pista con animación infinita */
+.hh-loop-track {
+  --gap: 16px;
+  --item-width: 180px;       
+  --speed: 35s;              
+
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: var(--gap);
+  align-items: stretch;
+
+  /* mueve la pista de derecha a izquierda en bucle */
+  animation: hh-scroll var(--speed) linear infinite;
+  will-change: transform;
+}
+
+/* pausa al pasar el mouse */
+.hh-loop-slider:hover .hh-loop-track {
+  animation-play-state: paused;
+}
+
+/* cada tarjeta */
+.hh-loop-item {
+  flex: 0 0 auto;
+  width: var(--item-width);
+  border: 2px solid #8B4513;   
+  border-radius: 12px;
+  padding: 8px;
+  text-align: center;
+  background: #fff;
+  user-select: none;
+}
+
+.hh-loop-item img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* keyframes: desplazamiento continuo */
+@keyframes hh-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * (var(--item-width) + var(--gap)) * 12)); }
+  
+}
+
+/* máscara de desvanecimiento en bordes (opcional, bonito) */
+.hh-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+}
+.hh-fade-left  { left: 0;  background: linear-gradient(to right, rgba(240,240,240,1), rgba(240,240,240,0)); }
+.hh-fade-right { right: 0; background: linear-gradient(to left,  rgba(240,240,240,1), rgba(240,240,240,0)); }
+
+/* respeta accesibilidad: si el usuario prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .hh-loop-track { animation: none; }
+}
+
+.hh-loop-track::-webkit-scrollbar { display: none; }
+
+
+
+.hh-loop-item a {
+  text-decoration: none;
+
+  color: inherit; 
+  
+  display: block; 
+}
+
+
+.hh-loop-item a h5 {
+  color: #333; 
+  
+  margin: 8px 0 0 0;
+  
+  font-size: 1em; 
+}
+
+.hh-loop-item a:hover {
+  
+  color: #654321;
+}
+
+.hh-loop-item .precio {
+    color: #8B4513; 
+    font-weight: bold;
+    margin: 4px 0 0 0;
+}
